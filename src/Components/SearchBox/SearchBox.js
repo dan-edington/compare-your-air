@@ -35,7 +35,6 @@ function SearchBox(props) {
 	}
 
 	function selectCity(e) {
-		console.log(e.target.dataset.city)
 		props.addCityDataToResults(e.target.dataset.city)
 		searchRef.current.value = ''
 		setFilteredCities([])
@@ -57,6 +56,7 @@ function SearchBox(props) {
 				onBlur={hideDropDown}
 				onFocus={showDropDown}
 				onChange={filterCityList}
+				aria-label="Search for a city"
 			/>
 			<DropDown visible={dropDownVisible}>
 				{filteredCities.map((city, i) => (

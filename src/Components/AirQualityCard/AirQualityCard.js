@@ -49,11 +49,15 @@ function AirQualityCard(props) {
 
 	return (
 		<AirQualityCardContainer>
-			<button data-city={escape(data.city)} onClick={removeCard}>
+			<button
+				data-city={escape(data.city)}
+				aria-label="Remove Result"
+				onClick={removeCard}
+			>
 				Remove
 			</button>
 			<p className="updated">UPDATED {calculateLastUpdatedTime()}</p>
-			<h2>{data.location}</h2>
+			<p className="location">{data.location}</p>
 			<p className="city">
 				in {data.city}, {data.country}
 			</p>

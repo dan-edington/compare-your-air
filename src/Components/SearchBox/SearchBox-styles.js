@@ -6,7 +6,6 @@ export const SearchInput = styled.input`
 	z-index: 10;
 	border-radius: 10px;
 	border: 2px solid #aaa;
-	outline: none;
 	font-size: 1.2em;
 	padding: 0.5em 0.5em 0.5em 2em;
 	width: 25em;
@@ -24,8 +23,8 @@ export const DropDown = styled.ul`
 	position: relative;
 	z-index: 9;
 	border-radius: 0 0 10px 10px;
-	padding-top: 9px;
-	top: -9px;
+	padding-top: 15px;
+	top: -20px;
 	overflow: auto;
 	max-height: 14em;
 	height: ${props => (props.visible ? 'auto' : '0')};
