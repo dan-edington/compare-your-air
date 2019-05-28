@@ -18,6 +18,12 @@ export const AppHeader = styled.header`
 		font-size: 1.5em;
 		margin-bottom: 0.8em;
 	}
+
+	@media (max-width: 390px) {
+		p {
+			line-height: 1.4em;
+		}
+	}
 `
 
 export const AppSearchArea = styled.main`

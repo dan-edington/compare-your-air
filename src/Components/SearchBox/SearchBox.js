@@ -13,7 +13,7 @@ function SearchBox(props) {
 				'https://api.openaq.org/v1/cities?country=GB&limit=10000'
 			)
 			const data = await response.json()
-			setCityList(data.results.map(result => result.city))
+			setCityList(data.results.map(result => escape(result.city)))
 		}
 
 		fetchCityList()
@@ -35,6 +35,7 @@ function SearchBox(props) {
 	}
 
 	function selectCity(e) {
+		console.log(e.target.dataset.city)
 		props.addCityDataToResults(e.target.dataset.city)
 		searchRef.current.value = ''
 		setFilteredCities([])
@@ -60,7 +61,7 @@ function SearchBox(props) {
 			<DropDown visible={dropDownVisible}>
 				{filteredCities.map((city, i) => (
 					<li key={i} data-city={city} onMouseDown={selectCity}>
-						{city}
+						{unescape(city)}
 					</li>
 				))}
 			</DropDown>

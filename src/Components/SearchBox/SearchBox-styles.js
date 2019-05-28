@@ -29,6 +29,7 @@ export const DropDown = styled.ul`
 	overflow: auto;
 	max-height: 14em;
 	height: ${props => (props.visible ? 'auto' : '0')};
+	opacity: ${props => (props.visible ? '1' : '0')};
 
 	li {
 		color: black;

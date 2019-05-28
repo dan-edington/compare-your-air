@@ -2,8 +2,8 @@ import styled from 'styled-components'
 import closeBtn from '../../assets/close-button.svg'
 
 export const AirQualityCardContainer = styled.article`
-	width: 45%;
-	float: left;
+	//width: 47%;
+	//float: left;
 	background-color: white;
 	color: black;
 	border-radius: 10px;
@@ -11,9 +11,10 @@ export const AirQualityCardContainer = styled.article`
 	position: relative;
 	margin-bottom: 3em;
 
-	&:nth-child(even) {
-		float: right;
-	}
+	// @media (max-width: 900px) {
+	// 	float: none;
+	// 	width: 100%;
+	// }
 
 	h2 {
 		color: rgba(122, 54, 177, 1);
@@ -24,16 +25,19 @@ export const AirQualityCardContainer = styled.article`
 
 	p {
 		padding: 1em 0em;
+		line-height: 1.4em;
 
 		&.updated,
 		&.values {
 			font-weight: bold;
 			padding: 0;
+			font-size: 0.9em;
 		}
 	}
 
 	button {
 		display: inline-block;
+		outline: none;
 		border: none;
 		padding: 0;
 		margin: 0;

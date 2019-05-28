@@ -56,6 +56,17 @@ const GlobalStyles = createGlobalStyle`
         color: white;
         font-family: 'Open Sans', sans-serif;
         font-size: 1em;
+        @media (max-width: 650px) {
+            font-size: 0.8em;
+        }
+
+        @media (max-width: 520px) {
+            font-size: 0.7em;
+        }
+
+        @media (max-width: 456px) {
+            font-size: 0.6em;
+        }
     }
 
     #app {

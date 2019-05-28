@@ -49,12 +49,14 @@ function AirQualityCard(props) {
 
 	return (
 		<AirQualityCardContainer>
-			<button data-city={data.city} onClick={removeCard}>
+			<button data-city={escape(data.city)} onClick={removeCard}>
 				Remove
 			</button>
 			<p className="updated">UPDATED {calculateLastUpdatedTime()}</p>
 			<h2>{data.location}</h2>
-			<p className="city">in {data.city}</p>
+			<p className="city">
+				in {data.city}, {data.country}
+			</p>
 			<p className="values">Values: {parseValues()} </p>
 		</AirQualityCardContainer>
 	)
