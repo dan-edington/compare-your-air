@@ -12,7 +12,11 @@ function App() {
 		setCityData({ ...cityData, [city]: data.results[0] })
 	}
 
-	function removeCityDataFromResults(city) {}
+	function removeCityDataFromResults(city) {
+		const newCityData = { ...cityData }
+		delete newCityData[city]
+		setCityData(newCityData)
+	}
 
 	return (
 		<Fragment>
@@ -25,7 +29,7 @@ function App() {
 				<SearchBox addCityDataToResults={addCityDataToResults} />
 				<ResultList
 					removeCityDataFromResults={removeCityDataFromResults}
-					cities={cityData}
+					cityData={cityData}
 				/>
 			</main>
 		</Fragment>
