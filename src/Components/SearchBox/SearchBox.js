@@ -1,8 +1,11 @@
 import React, { useState, useEffect, Fragment } from 'react'
+import { SearchInput, DropDown } from './SearchBox-styles'
 
 function SearchBox(props) {
 	const [cityList, setCityList] = useState([])
 	const [filteredCities, setFilteredCities] = useState([])
+	const [dropDownVisible, setDropDownVisible] = useState(false)
+	let searchRef = React.createRef()
 
 	useEffect(() => {
 		async function fetchCityList() {
@@ -22,7 +25,8 @@ function SearchBox(props) {
 			cityList.filter(el => {
 				if (
 					el.toLowerCase().indexOf(inputVal) === 0 &&
-					inputVal !== ''
+					inputVal !== '' &&
+					!props.isCitySelected(el)
 				) {
 					return true
 				}
@@ -32,18 +36,34 @@ function SearchBox(props) {
 
 	function selectCity(e) {
 		props.addCityDataToResults(e.target.dataset.city)
+		searchRef.current.value = ''
+		setFilteredCities([])
+	}
+
+	function hideDropDown() {
+		setDropDownVisible(false)
+	}
+
+	function showDropDown() {
+		setDropDownVisible(true)
 	}
 
 	return (
 		<Fragment>
-			<input type="search" onChange={filterCityList} />
-			<ul>
+			<SearchInput
+				ref={searchRef}
+				type="search"
+				onBlur={hideDropDown}
+				onFocus={showDropDown}
+				onChange={filterCityList}
+			/>
+			<DropDown visible={dropDownVisible}>
 				{filteredCities.map((city, i) => (
-					<li key={i} data-city={city} onClick={selectCity}>
+					<li key={i} data-city={city} onMouseDown={selectCity}>
 						{city}
 					</li>
 				))}
-			</ul>
+			</DropDown>
 		</Fragment>
 	)
 }

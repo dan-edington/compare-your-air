@@ -1,6 +1,8 @@
 import React, { useState, Fragment } from 'react'
-import SearchBox from './SearchBox'
-import ResultList from './ResultList'
+import GlobalStyles from './GlobalStyles'
+import { AppHeader, AppContainer, AppSearchArea } from './App-styles'
+import SearchBox from './SearchBox/SearchBox'
+import ResultList from './ResultList/ResultList'
 
 function App() {
 	const [cityData, setCityData] = useState({})
@@ -18,21 +20,29 @@ function App() {
 		setCityData(newCityData)
 	}
 
+	function isCitySelected(city) {
+		return cityData[city] ? true : false
+	}
+
 	return (
-		<Fragment>
-			<header>
+		<AppContainer>
+			<GlobalStyles />
+			<AppHeader>
 				<h1>Compare your Air</h1>
 				<p>Compare the air quality between cities in the UK.</p>
 				<p>Select cities to compare using the search tool below.</p>
-			</header>
-			<main>
-				<SearchBox addCityDataToResults={addCityDataToResults} />
+			</AppHeader>
+			<AppSearchArea>
+				<SearchBox
+					addCityDataToResults={addCityDataToResults}
+					isCitySelected={isCitySelected}
+				/>
 				<ResultList
 					removeCityDataFromResults={removeCityDataFromResults}
 					cityData={cityData}
 				/>
-			</main>
-		</Fragment>
+			</AppSearchArea>
+		</AppContainer>
 	)
 }
 

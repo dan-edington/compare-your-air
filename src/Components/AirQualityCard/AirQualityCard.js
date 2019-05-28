@@ -1,4 +1,5 @@
-import React, { Fragment } from 'react'
+import React from 'react'
+import { AirQualityCardContainer } from './AirQualityCard-styles'
 
 function AirQualityCard(props) {
 	const data = props.cityData
@@ -47,15 +48,15 @@ function AirQualityCard(props) {
 	}
 
 	return (
-		<Fragment>
+		<AirQualityCardContainer>
 			<button data-city={data.city} onClick={removeCard}>
 				Remove
 			</button>
-			<p>UPDATED {calculateLastUpdatedTime()}</p>
-			<p>{data.location}</p>
-			<p>in {data.city}</p>
-			<p>Values: {parseValues()} </p>
-		</Fragment>
+			<p className="updated">UPDATED {calculateLastUpdatedTime()}</p>
+			<h2>{data.location}</h2>
+			<p className="city">in {data.city}</p>
+			<p className="values">Values: {parseValues()} </p>
+		</AirQualityCardContainer>
 	)
 }
 
