@@ -1,6 +1,6 @@
 import React, { useState, useEffect, Fragment } from 'react'
 
-function SearchBox() {
+function SearchBox(props) {
 	const [cityList, setCityList] = useState([])
 	const [filteredCities, setFilteredCities] = useState([])
 
@@ -30,12 +30,18 @@ function SearchBox() {
 		)
 	}
 
+	function selectCity(e) {
+		props.addCityDataToResults(e.target.dataset.city)
+	}
+
 	return (
 		<Fragment>
 			<input type="search" onChange={filterCityList} />
 			<ul>
 				{filteredCities.map((city, i) => (
-					<li key={i}>{city}</li>
+					<li key={i} data-city={city} onClick={selectCity}>
+						{city}
+					</li>
 				))}
 			</ul>
 		</Fragment>
